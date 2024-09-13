@@ -2,6 +2,7 @@ package com.example.swager.service;
 
 import com.example.swager.dto.StudentDTO;
 import com.example.swager.models.Students;
+import com.example.swager.models.XepLoai;
 import com.example.swager.responses.StudentRespone;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +19,7 @@ public interface IStudentService {
     List<Students> findByName(String name);
     List<Students> findByThanhPho(String name);
     List<Students> findByThanhPhoAndTen(String name);
-
+    List<Students>  findByNgaySinhBetweeb(int startYear,int endYear);
+    List<Students> findByXepLoai(XepLoai xepLoai);
+   List<Students> searchAll(XepLoai xepLoai,String name,int startYear,int endYear);
 }

@@ -15,14 +15,14 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class StudentRespone extends BaseRespone{
     private Long id;
-    private String ten;
+    private String name;
     private String thanhPho;
     private LocalDate ngaySinh;
     private String xepLoai;
     public static StudentRespone fromStudent(Students student){
         StudentRespone studentRespone=StudentRespone.builder()
                 .id(student.getId())
-                .ten(student.getName())
+                .name(student.getName())
                 .thanhPho(student.getThanhPho())
                 .ngaySinh(student.getNgaySinh())
                 .xepLoai(String.valueOf(student.getXepLoai()))

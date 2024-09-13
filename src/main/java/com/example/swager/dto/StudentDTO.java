@@ -20,7 +20,7 @@ import java.time.LocalDate;
 public class StudentDTO {
     @NotBlank(message = "tên không được trống")
     private String name;
-    @NotBlank(message = "tên không được trống")
+    @NotBlank(message = "thành phho không được trống")
     private String thanhPho;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Past(message = "phải là 1 ngày trong quá khứ")

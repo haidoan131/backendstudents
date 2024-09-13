@@ -76,4 +76,19 @@ public class StudentService implements IStudentService {
     public List<Students> findByThanhPhoAndTen(String name) {
         return studentRepository.findByThanhPhoAndName(name);
     }
+
+    @Override
+    public List<Students> findByNgaySinhBetweeb(int startYear, int endYear) {
+        return studentRepository.findByNgaySinhBetweeb(startYear,endYear);
+    }
+
+    @Override
+    public List<Students> findByXepLoai(XepLoai xepLoai) {
+        return studentRepository.findByXepLoai(xepLoai);
+    }
+
+    @Override
+    public List<Students> searchAll(XepLoai xepLoai, String name, int startYear, int endYear) {
+        return studentRepository.searchAll(xepLoai,name,startYear,endYear);
+    }
 }

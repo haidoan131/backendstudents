@@ -3,7 +3,7 @@ package com.example.swager.models;
 import java.util.concurrent.TimeoutException;
 
 public enum XepLoai {
-    Gioi("Giỏi"),Kha("Khá"),TRUNG_BINH("Trung Binh"),YEU("Yếu");
+    Gioi("Giỏi"),Kha("Khá"),TRUNG_BINH("Trung Bình"),YEU("Yếu");
     private String xl;
     XepLoai(String xl){
         this.xl=xl;

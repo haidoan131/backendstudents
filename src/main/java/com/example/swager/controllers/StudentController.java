@@ -3,6 +3,7 @@ package com.example.swager.controllers;
 import com.example.swager.dto.StudentDTO;
 import com.example.swager.exceptions.ResourceNotFoundException;
 import com.example.swager.models.Students;
+import com.example.swager.models.XepLoai;
 import com.example.swager.responses.ApiResponse;
 import com.example.swager.responses.StudentListRespone;
 import com.example.swager.responses.StudentRespone;
@@ -127,7 +128,7 @@ public  ResponseEntity<?> create(@PathVariable Long id,@Valid @RequestBody Stude
 
      studentService.deleteStudent(id);
         ApiResponse apiResponse=ApiResponse.builder()
-                .data(null)
+                .data(id)
                 .status(HttpStatus.OK.value())
                 .message("delete successfully")
                 .build();
@@ -162,6 +163,40 @@ public  ResponseEntity<?> create(@PathVariable Long id,@Valid @RequestBody Stude
                 .build();
         return ResponseEntity.ok(apiResponse);
     }
+    @GetMapping("/search4")
+    public  ResponseEntity<ApiResponse> search4(@RequestParam int startYear,@RequestParam int endYear){
+        ApiResponse apiResponse=ApiResponse.builder()
+                .data(studentService.findByNgaySinhBetweeb(startYear,endYear))
+                .status(HttpStatus.OK.value())
+                .message("search successfully")
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+    @GetMapping("/searchXepLoai")
+    public  ResponseEntity<ApiResponse> search4(@RequestParam ("xepLoai") String xepLoaiStr){
+        ApiResponse apiResponse=ApiResponse.builder()
+                .data(studentService.findByXepLoai(XepLoai.fromTen(xepLoaiStr)))
+                .status(HttpStatus.OK.value())
+                .message("search successfully")
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+    @GetMapping("/searchAll")
+    public  ResponseEntity<ApiResponse> searchAll(
+         @RequestParam(value = "xepLoai",required = false) String xepLoai,
+         @RequestParam(value = "name",required = false) String name,
+         @RequestParam(value = "startYear",required = false) int startYear,
+         @RequestParam(value = "endYear",required = false) int endYear
+    ){
+        ApiResponse apiResponse=ApiResponse.builder()
+                .data(studentService.searchAll(XepLoai.fromTen(xepLoai),name,startYear,endYear))
+                .status(HttpStatus.OK.value())
+                .message("search successfully")
+                .build();
+        return ResponseEntity.ok(apiResponse);
+    }
+
+
 
     @GetMapping("/list")
     public ResponseEntity<ApiResponse> getStudents1(

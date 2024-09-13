@@ -27,7 +27,7 @@ public class Students extends BaseEntity {
     @Size(min=2 ,max=50,message = "tên phải có 2-50 ký tự")
     @NotBlank(message = "tên không được trống")
     private String name;
-    @NotBlank(message = "tên không được trống")
+    @NotBlank(message = "thành phố không được trống")
     private String thanhPho;
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Past(message = "phải là 1 ngày trong quá khứ")
